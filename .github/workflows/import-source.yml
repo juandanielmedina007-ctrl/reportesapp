@@ -1,0 +1,35 @@
+name: Android - importar y verificar
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publicar estructura del proyecto
+        if: hashFiles('reportesapp-source.zip') != ''
+        run: |
+          unzip -o reportesapp-source.zip -x '.github/*'
+          rm reportesapp-source.zip
+          printf "\nAPI_BASE_URL=https://reporteservice-medina-garces.onrender.com/\n" >> gradle.properties
+          chmod +x gradlew
+          git config user.name "Juan Daniel Medina Garces"
+          git config user.email "247490999+juandanielmedina007-ctrl@users.noreply.github.com"
+          git add -A
+          git commit -m "Publicar app Android completa conectada a Render"
+          git push
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: android-actions/setup-android@v3
+      - run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
+      - run: ./gradlew assembleDebug lintDebug --no-daemon
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ReportaLimpio-Render
+          path: app/build/outputs/apk/debug/app-debug.apk
