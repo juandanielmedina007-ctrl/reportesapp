@@ -14,13 +14,13 @@ APK generado: `app/build/outputs/apk/debug/app-debug.apk`.
 
 ## Cambiar servidor
 
-La URL predeterminada es `http://10.0.2.2:8080/`. Para Render:
+La URL configurada en `gradle.properties` es `https://reporteservice-medina-garces.onrender.com/`. Para reconstruir explícitamente con Render:
 
 ```powershell
 ./gradlew.bat assembleDebug '-PAPI_BASE_URL=https://SU-SERVICIO.onrender.com/'
 ```
 
-También puede definir `API_BASE_URL=https://SU-SERVICIO.onrender.com/` en `gradle.properties`. Mantenga la barra final. Para celular físico utilice la IP de su PC en la misma red, por ejemplo `http://192.168.1.20:8080/`, y permita ese puerto en su red local.
+Para la API local desde el emulador: `./gradlew.bat assembleDebug '-PAPI_BASE_URL=http://10.0.2.2:8080/'`. También puede cambiar `API_BASE_URL` en `gradle.properties`. Mantenga la barra final. Para celular físico utilice la IP de su PC en la misma red, por ejemplo `http://192.168.1.20:8080/`, y permita ese puerto en su red local.
 
 El manifiesto contiene INTERNET y permite HTTP para la demostración local. Las peticiones tienen 120 segundos de espera de lectura para el primer arranque del servicio en Render.
 
