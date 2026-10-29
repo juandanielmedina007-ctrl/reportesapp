@@ -1,0 +1,16 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:paddingTop="16dp">
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Nuevo reporte" android:textStyle="bold" android:textSize="24sp" android:textColor="#153C32"/>
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Cuéntanos dónde se acumulan los residuos.
+Los campos con * son obligatorios." android:paddingVertical="12dp" android:textColor="#587269"/>
+ <EditText android:id="@+id/dni" android:layout_width="match_parent" android:layout_height="56dp" android:hint="DNI del ciudadano *" android:inputType="number" android:maxLength="8"/>
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tipo de residuo *" android:paddingTop="16dp"/>
+ <Spinner android:id="@+id/type" android:layout_width="match_parent" android:layout_height="56dp"/>
+ <EditText android:id="@+id/address" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:hint="Dirección exacta *" android:inputType="textPostalAddress|textCapSentences" android:maxLength="200"/>
+ <EditText android:id="@+id/reference" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="80dp" android:hint="Referencia (opcional)" android:inputType="textMultiLine|textCapSentences" android:maxLength="255"/>
+ <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="La fecha se registra automáticamente.
+El reporte se creará como pendiente." android:textColor="#587269" android:paddingVertical="16dp"/>
+ <ProgressBar android:id="@+id/progress" android:layout_width="40dp" android:layout_height="40dp" android:layout_gravity="center" android:visibility="gone"/>
+ <TextView android:id="@+id/message" android:layout_width="match_parent" android:layout_height="wrap_content" android:textColor="#A54125" android:paddingVertical="8dp"/>
+ <Button android:id="@+id/save" android:layout_width="match_parent" android:layout_height="56dp" android:text="Registrar reporte"/>
+ <Button android:id="@+id/cancel" android:layout_width="match_parent" android:layout_height="48dp" android:text="Volver a reportes"/>
+</LinearLayout></ScrollView>

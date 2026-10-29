@@ -1,0 +1,26 @@
+plugins { id 'com.android.application' }
+android {
+ namespace 'com.medinagarces.reportesapp'
+ compileSdk 36
+ defaultConfig {
+  applicationId 'com.medinagarces.reportesapp'
+  minSdk 26
+  targetSdk 36
+  versionCode 1
+  versionName '1.0'
+  testInstrumentationRunner 'com.medinagarces.reportesapp.FlowInstrumentation'
+  buildConfigField 'String', 'API_BASE_URL', '"' + providers.gradleProperty('API_BASE_URL').getOrElse('http://10.0.2.2:8080/') + '"'
+ }
+ buildFeatures { buildConfig true; viewBinding true }
+ compileOptions { sourceCompatibility JavaVersion.VERSION_21; targetCompatibility JavaVersion.VERSION_21 }
+ buildTypes { release { minifyEnabled false } }
+}
+dependencies {
+ implementation 'androidx.activity:activity-ktx:1.10.1'
+ implementation 'androidx.recyclerview:recyclerview:1.4.0'
+ implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1'
+ implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.1'
+ implementation 'com.squareup.retrofit2:retrofit:2.12.0'
+ implementation 'com.squareup.retrofit2:converter-gson:2.12.0'
+ implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+}
